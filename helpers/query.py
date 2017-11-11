@@ -16,14 +16,16 @@ class Query:
 		self.results = []
 
 
-	def query_preprocess(self):
+	def query_preprocess(self, query):
 		"""
 		method to preprocess the query
 		tokenizes, stems unigrams, generate list of keywords including bigrams and trigrams
 		saves the above generated keywords to self.keywords
 		"""
-		self.input = input("Enter query: ")
-		print(self.input)
+		# self.input = input("Enter query: ")
+		# print(self.input)
+		self.input = query
+		#print(self.input)
 		tokens = self.preprocessor.tokenize(self.input)
 		ngrams = self.preprocessor.generate_ngrams(tokens)
 		ngrams[0] = self.preprocessor.stem(ngrams[0])

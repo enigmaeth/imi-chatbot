@@ -35,30 +35,6 @@ def pre_process_and_query():
 	for file in files:
 		print(fileNum, ": ", file)
 		fileNum += 1
+	print("Indexing finished successfully. Files indexed: ", fileNum)
 
-	# Loop to support query any number of times
-	while True:
-
-		# query pre-processing
-		q.query_preprocess()
-
-		# escape string to quit the main program
-		if q.input == "quit()":
-			break
-
-		# displaying resutls
-		q.display_results(len(files))
-		ans, rank = q.results, 1
-		ans.sort()
-		ans = ans[::-1]
-		print()
-		print("RESULTS: ")
-		for element in ans:
-			if element[0] > 0:
-				print(rank,". ",q.preprocessor.fileNames[element[1]],"( ",element[0]," )")
-				rank += 1
-		print()
-
-
-if __name__ == '__main__':
-	pre_process_and_query()
+	return q,len(files)

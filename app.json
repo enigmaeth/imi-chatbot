@@ -1,0 +1,16 @@
+{
+  "name": "pingerman",
+  "description": "powerful servers for people who ping",
+  "repository": "https://github.com/enigmaeth/imi-chatbot.git",
+  "logo": "http://labs.fossasia.org/images/fossasia.png",
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ],
+  "scripts": [
+    {
+        "postinstall": "python3 app.py"
+    }
+  ]
+}

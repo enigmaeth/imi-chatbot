@@ -10,7 +10,7 @@ class FileManager:
 		"""
 		initialize variables: root path and accepted formats for the indexer
 		"""
-		self.root = '/home/enigmaeth/TestDump'
+		self.root = '/home/enigmaeth/31/IR'
 		self.accepted_formats = ['pdf', 'pptx', 'docx', 'doc']
 
 
@@ -21,7 +21,7 @@ class FileManager:
 		files_list = []
 		for path, subdirs, files in os.walk(self.root):
 		    for name in files:
-		    	files_list.append(os.path.join(self.root, name))
+		    	files_list.append(os.path.join(path, name))
 		return files_list[0:-1]
 
 
@@ -34,6 +34,9 @@ class FileManager:
 		files = self.get_all_files()
 		files_list = []
 		for name in files:
-			if(name.split('.')[-1] in self.accepted_formats and os.stat(os.path.join(self.root, name)).st_size < 5000000):
-				files_list.append(os.path.join(self.root, name))
+			try:
+				if(name.split('.')[-1] in self.accepted_formats and os.stat(os.path.join(self.root, name)).st_size < 5000000):
+					files_list.append(os.path.join(self.root, name))
+			except:
+				pass
 		return files_list[0:-1]
